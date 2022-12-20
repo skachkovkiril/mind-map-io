@@ -1,0 +1,38 @@
+<template>
+  <div class="home">
+    <h1>Семантический граф</h1>
+    <div class="sigma" ref="sigma"></div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { createGraph } from "@/utils/semanticgraph";
+import ForceSupervisor from "graphology-layout-force/worker";
+import Graph from "graphology";
+
+export default defineComponent({
+  name: "SemanticGraph",
+  components: {},
+  data() {
+    return {
+      layout: new ForceSupervisor(new Graph()),
+    };
+  },
+  mounted() {
+    createGraph(this.$refs.sigma).then((x) => (this.layout = x));
+  },
+  beforeUnmount() {
+    this.layout.stop();
+  },
+});
+</script>
+
+<style scoped>
+.sigma {
+  min-height: 580px;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+</style>
