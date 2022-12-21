@@ -1,17 +1,19 @@
-FROM node:lts-alpine
-
-RUN npm install -g http-server
+FROM node:latest as build-stage
 
 WORKDIR /app/
 
-COPY frontend/package*.json /app/
+COPY frontend/package*.json ./
 
 RUN npm install
 
-COPY frontend /app/
+COPY frontend .
 
 RUN npm run build
 
-EXPOSE 8080
+FROM nginx as production-stage
 
-CMD [ "http-server", "dist" ]
+RUN mkdir /app/
+
+COPY --from=build-stage /app/dist /app
+
+COPY nginx.conf etc/nginx/nginx.conf
