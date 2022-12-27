@@ -1,14 +1,16 @@
 from pydantic import BaseModel
 
+
 class BaseGlossary(BaseModel):
     term: str
     definition: str
 
-    class Config: 
+    class Config:
         orm_mode = True
+
 
 class Definition(BaseModel):
     definition: str
 
-    class Config: 
+    class Config:
         orm_mode = True

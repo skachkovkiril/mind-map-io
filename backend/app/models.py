@@ -20,7 +20,8 @@ class Edge(Base):
 
     id = Column(Integer, primary_key=True)
     label = Column(String(100), nullable=False)
-    type_edge = Column(Enum("arrow", "line", name = "type_edge"), nullable=False, default="line")
+    type_edge = Column(Enum("arrow", "line", name="type_edge"),
+                       nullable=False, default="line")
     size = Column(Integer, nullable=False, default=2)
     id_node_from = Column(ForeignKey('node.id'), nullable=False, index=True)
     id_node_to = Column(ForeignKey('node.id'), nullable=False, index=True)

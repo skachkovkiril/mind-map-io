@@ -9,6 +9,7 @@ router = APIRouter(
     tags=["Semantic Graph"],
 )
 
+
 @router.get('/semantic-graph', response_model=BaseSemanticGraph)
 async def get_data(db: Session = Depends(get_db)):
     return {
