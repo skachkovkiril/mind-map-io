@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>Семантический граф</h1>
     <div class="sigma" ref="sigma"></div>
   </div>
 </template>
