@@ -3,8 +3,10 @@ ODB = -f docker-compose-only-db.yaml
 AWB = -f docker-compose-without-backend.yaml
 AWF = -f docker-compose-without-frontend.yaml
 
+START = up --build -d
+
 build:
-	$(DC) up --build -d --remove-orphans
+	$(DC) $(START) --remove-orphans
 
 down:
 	$(DC) down
@@ -16,19 +18,19 @@ activate:
 	cd backend && SET PIPENV_DOTENV_LOCATION=../.env && pipenv shell
 
 run-db:
-	$(DC) $(ODB) up -d
+	$(DC) $(ODB) $(START)
 
 stop-db:
 	$(DC) $(ODB) down
 
 run-app-without-backend:
-	$(DC) $(AWB) up -d
+	$(DC) $(AWB) $(START)
 
 stop-app-without-backend:
 	$(DC) $(AWB) down
 
 run-app-without-frontend:
-	$(DC) $(AWF) up -d
+	$(DC) $(AWF) $(START)
 
 stop-app-without-frontend:
 	$(DC) $(AWF) down
