@@ -1,8 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import GlossaryView from "../views/GlossaryView.vue";
 import SemanticGraphVue from "../views/SemanticGraph.vue";
+import HomeView from "../views/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    name: "home",
+    component: HomeView,
+  },
   {
     path: "/glossary",
     name: "glossary",
