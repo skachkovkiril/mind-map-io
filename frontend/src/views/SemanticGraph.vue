@@ -29,6 +29,7 @@ export default defineComponent({
 
 <style scoped>
 .sigma {
+  background-color: white;
   min-height: 580px;
   height: 100%;
   border: 1px solid black;
