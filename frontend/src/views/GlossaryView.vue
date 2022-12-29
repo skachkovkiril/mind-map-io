@@ -7,7 +7,7 @@
         class="form-control form-control-dark"
         placeholder="Поиск..."
         aria-label="Поиск"
-        v-on:keyup.enter="search"
+        v-on:keydown.enter="search"
       />
     </form>
     <div v-if="response_data.length != 0">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div v-else>Данные не найдены</div>
+    <div v-else>По запросу "{{ searching }}" терминов не найдено</div>
   </div>
 </template>
 
@@ -39,6 +39,7 @@ export default defineComponent({
     return {
       response_data: [],
       term: "",
+      searching: "",
     };
   },
   async mounted() {
@@ -46,6 +47,7 @@ export default defineComponent({
   },
   methods: {
     search: async function () {
+      this.searching = this.term;
       this.response_data = await getTerm(this.term);
     },
   },
