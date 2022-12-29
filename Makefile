@@ -11,7 +11,7 @@ build:
 down:
 	$(DC) down
 
-show_logs:
+show-logs:
 	$(DC) logs
 
 activate:

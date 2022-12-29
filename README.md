@@ -12,4 +12,4 @@
 
 Просмотр событий (логов):
 
-``` make show_logs ```
+``` make show-logs ```
