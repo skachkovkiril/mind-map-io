@@ -18,10 +18,10 @@ export default defineComponent({
       layout: new ForceSupervisor(new Graph()),
     };
   },
-  mounted() {
-    createGraph(this.$refs.sigma).then((x) => (this.layout = x));
+  async mounted() {
+    await createGraph(this.$refs.sigma).then((x) => (this.layout = x));
   },
-  beforeUnmount() {
+  async beforeUnmount() {
     this.layout.stop();
   },
 });
