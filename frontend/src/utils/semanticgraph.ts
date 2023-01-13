@@ -3,7 +3,7 @@ import Sigma from "sigma";
 import { getSemanticGraph } from "./get_semanticgraph";
 import ForceSupervisor from "graphology-layout-force/worker";
 
-export async function createGraph(container: any): Promise<ForceSupervisor> {
+export async function createGraph(container: any) {
   const graph = new Graph();
   const data = await getSemanticGraph();
   graph.import(data);
@@ -12,11 +12,9 @@ export async function createGraph(container: any): Promise<ForceSupervisor> {
     graph.setNodeAttribute(node, "x", 100 * Math.cos(angle));
     graph.setNodeAttribute(node, "y", 100 * Math.sin(angle));
   });
-
+  new ForceSupervisor(graph).start();
   new Sigma(graph, container, {
     renderEdgeLabels: true,
+    allowInvalidContainer: true,
   });
-  const layout = new ForceSupervisor(graph);
-  layout.start();
-  return layout;
 }
