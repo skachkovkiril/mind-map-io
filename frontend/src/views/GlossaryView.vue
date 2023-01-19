@@ -14,7 +14,7 @@
       <div
         v-for="item in response_data"
         :key="item['term']"
-        class="card text-bg-secondary mb-3"
+        class="card text-bg mb-3"
         style="max-width: 100%"
       >
         <div class="card-header">{{ item["term"] }}</div>
@@ -53,3 +53,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.card {
+  background-color: #ffffff1f;
+  border: 1px solid #ffffff1c;
+}
+</style>
