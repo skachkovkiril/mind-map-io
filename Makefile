@@ -3,10 +3,10 @@ ODB = -f docker-compose-only-db.yaml
 AWB = -f docker-compose-without-backend.yaml
 AWF = -f docker-compose-without-frontend.yaml
 
-START = up --build -d
+START = up --build -d --remove-orphans
 
 build:
-	$(DC) $(START) --remove-orphans
+	$(DC) $(START)
 
 down:
 	$(DC) down
