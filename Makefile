@@ -1,4 +1,4 @@
-DC = docker-compose
+DC = docker compose
 ODB = -f docker-compose-only-db.yaml
 AWB = -f docker-compose-without-backend.yaml
 AWF = -f docker-compose-without-frontend.yaml
