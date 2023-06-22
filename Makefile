@@ -5,8 +5,12 @@ AWF = -f docker-compose-without-frontend.yaml
 
 START = up --build -d --remove-orphans
 
+CLEAR = docker image prune -a -f
+
+
 build:
 	$(DC) $(START)
+	$(CLEAR)
 
 down:
 	$(DC) down
